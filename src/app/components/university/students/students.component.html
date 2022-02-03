@@ -1,0 +1,95 @@
+<form [formGroup]="form" (ngSubmit)="saveStudent()">
+    <label for="student-identification">Identification</label>
+    <div class="row" id="student-identification">
+        <div class="form-group col-md-3">
+            <select class="form-control" formControlName="idIdentificationType" id="student-identification-list">
+                <option disabled></option>
+                <option value="1">CC</option>
+                <option value="2">CE</option>
+                <option value="3">TI</option>
+                <option value="4">PA</option>
+            </select>
+        </div>
+        <div class="form-group col-md-9">
+            <input type="text" formControlName="identificationID" class="form-control" id="identificationID" maxlength="12" placeholder="Identification Number" required="true">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+                <input type="text" formControlName="nameStudent" class="form-control" placeholder="First Name" required="true" maxlength="30">
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+                <input type="text" formControlName="secondNameStudent" class="form-control" placeholder="Middle Name" maxlength="30">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-user-circle "></i>
+                    </div>
+                </div>
+                <input type="text" formControlName="lastNameStudent" class="form-control" placeholder="Last Name" required="true" maxlength="30">
+            </div>
+        </div>
+    
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-user-circle "></i>
+                    </div>
+                </div>
+                <input type="text" formControlName="secondLastNameStudent" class="form-control" placeholder="Second Last Name" maxlength="30">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="gender-list">Gender</label>
+        <select class="form-control" formControlName="genderStudent" id="gender-list" required="true">
+            <option disabled></option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+            <option value="3">Other</option>
+        </select>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="birth-date">Birth Date</label>
+            <input type="date" formControlName="birthDate" (keydown)="disableDate()" class="form-control" id="birth-date" min="1900-01-01" max={{maxDateBirth}} required="true">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="active-student">Active Student</label>
+            <select class="form-control" formControlName="activeStudent" id="active-student">
+                <option disabled></option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" [disabled]="form.invalid" type="submit"><i class="fas fa-save"></i> Save</button>
+    </div>
+</form>

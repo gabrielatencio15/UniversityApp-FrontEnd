@@ -1,0 +1,32 @@
+<div class="table-responsive" style="height: 400px; overflow-y: scroll;">
+    <table class="table table-lg table-responsive text-nowrap table-striped">
+        <th>Options</th>
+        <th>ID Type</th>
+        <th>Identification</th>
+        <th>Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Second Last Name</th>
+        <th>Gender</th>
+        <th>Birth Date</th>
+        <th>Active</th>
+    
+        <tr *ngFor="let student of universityService.listStudents">
+            <td style="text-align: center;">
+                <i title="Edit" class="fas fa-edit fa-md text-info" (click)="editStudent(student)" style="cursor: pointer;"></i>&nbsp;
+                <i title="Delete" class="fas fa-trash fa-md text-danger" (click)="deleteStudent(student.idStudent || 0)" style="cursor: pointer;"></i>
+            </td>
+            <td>{{ (student.idIdentificationType == 1) ? 'CC' : (student.idIdentificationType == 2) ? 'CE' : (student.idIdentificationType == 3) ? 'TI' : 'PA' }}</td>
+            <td>{{ student.identificationID }}</td>
+            <td>{{ student.nameStudent }}</td>
+            <td>{{ student.secondNameStudent }}</td>
+            <td>{{ student.lastNameStudent }}</td>
+            <td>{{ student.secondLastNameStudent }}</td>
+            <td>{{ (student.genderStudent == 1) ? 'Male' : (student.genderStudent == 2) ? 'Female' : 'Other' }}</td>
+            <td>{{ formatDate(student.birthDate) }}</td>
+            <td>{{ (student.activeStudent) ? 'Yes' : 'No' }}</td>
+        </tr>
+    
+    </table>
+</div>
+
